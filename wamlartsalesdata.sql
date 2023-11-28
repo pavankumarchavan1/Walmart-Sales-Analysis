@@ -56,19 +56,23 @@ SET month_name = (monthname(date));
 
 -- 1. How many unique cities does the data have?
 
+
 SELECT DISTINCT(City)
 FROM walmartsalesdata01;
+
 
 -- 2. In which city is each branch?
 
 SELECT DISTINCT(City), Branch
 FROM walmartsalesdata01;
 
+
 -- 3. How many branches does each city have?
 
 SELECT City, COUNT(Branch)
 FROM walmartsalesdata01
 GROUP BY City;
+
 
 -- ------------------------------------------- Product ------------------------------------------------
 -- ----------------------------------------------------------------------------------------------------
@@ -78,12 +82,14 @@ GROUP BY City;
 SELECT COUNT(DISTINCT(Product_line)) AS unique_product_line
 FROM walmartsalesdata01;
 
+
 -- 2. What is the most common payment method?
 
 SELECT Payment, COUNT(Payment) AS payment_method
 FROM walmartsalesdata01
 GROUP BY Payment
 ORDER BY payment_method DESC;
+
 
 -- 3. What is the most selling product line?
 
@@ -92,12 +98,14 @@ FROM walmartsalesdata01
 GROUP BY Product_line
 ORDER BY most_selling DESC;
 
+
 -- 4. What is the total revenue by month?
 
 SELECT month_name, SUM(Total) AS revenue
 FROM walmartsalesdata01
 GROUP BY month_name
 ORDER BY revenue DESC;
+
 
 -- 5. What month had the largest COGS?
 
@@ -106,12 +114,14 @@ FROM walmartsalesdata01
 GROUP BY month_name
 ORDER BY COGS DESC;
 
+
 -- 6. What product line had the largest revenue?
 
 SELECT Product_line, SUM(Total) AS PL_revenue
 FROM walmartsalesdata01
 GROUP BY Product_line
 ORDER BY PL_revenue DESC;
+
 
 -- 7. What is the city with the largest revenue?
 
@@ -120,18 +130,25 @@ FROM walmartsalesdata01
 GROUP BY City
 ORDER BY city_revenue DESC;
 
+
 -- 8. What product line had the largest VAT?
 
 SELECT Product_line, MAX(VAT)
 FROM walmartsalesdata01
 GROUP BY Product_line;
 
+
 -- 9. Fetch each product line and add a column to those product line showing "Good", "Bad". Good if its greater than average sales.
 
-SELECT Product_line, AVG(Total) AS avg_total
+SELECT product_line, AVG(Quantity) AS avg_qty,
+	CASE
+		WHEN AVG(Quantity) > (SELECT AVG(Quantity) FROM walmartsalesdata01) THEN "Good"
+        ELSE "Bad"
+	END AS remark
 FROM walmartsalesdata01
-GROUP BY Product_line
-ORDER BY avg_total;
+GROUP BY product_line
+ORDER BY avg_qty DESC;
+
 
 -- 10. Which branch sold more products than average product sold?
 
@@ -148,7 +165,7 @@ WHERE sub.avg_qty > sub.qty;
 SELECT Product_line, Gender, COUNT(Gender) AS gender_count
 FROM walmartsalesdata01
 GROUP BY Gender, Product_line
-ORDER BY gender_count DESC;
+ORDER BY Gender, gender_count DESC;
 
 
 -- 12. What is the average rating of each product line?
