@@ -71,13 +71,13 @@ The dataset was obtained from Kaggle. This dataset contains sales transactions f
 
 ## Business Questions To Answer
 
-### Generic Question
+### Generic Questions
 
 1. How many unique cities does the data have?
 2. In which city is each branch?
 3. How many branches does each city have?
 
-### Product related questions
+### Product Related Questions
 
 1. How many unique product lines does the data have?
 2. What is the most common payment method?
@@ -92,14 +92,14 @@ The dataset was obtained from Kaggle. This dataset contains sales transactions f
 11. What is the most common product line by gender?
 12. What is the average rating of each product line?
 
-### Sales
+### Sales Related Questions
 
 1. Number of sales made in each time of the day per weekday
 2. Which of the customer types brings the most revenue?
 3. Which city has the largest tax percent/ VAT (**Value Added Tax**)?
 4. Which customer type pays the most in VAT?
 
-### Customer
+### Customer Related Questions
 
 1. How many unique customer types does the data have?
 2. How many unique payment methods does the data have?
