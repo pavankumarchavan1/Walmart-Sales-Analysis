@@ -7,7 +7,7 @@ This project aims to explore the Walmart Sales data to understand top performing
 
 ## Purposes Of The Project
 
-The major aim of thie project is to gain insight into the sales data of Walmart to understand the different factors that affect sales of the different branches.
+The major aim of the project is to gain insight into the sales data of Walmart to understand the different factors that affect sales of the different branches.
 
 ## About Data
 
